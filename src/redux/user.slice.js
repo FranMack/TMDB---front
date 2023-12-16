@@ -5,7 +5,7 @@ const initialState = {
   lastname: "",
   username: "",
   email: "",
-  url_image:""
+  url_image: "",
 };
 
 const userSlice = createSlice({
@@ -17,7 +17,6 @@ const userSlice = createSlice({
     },
   },
 });
-
 
 export const { setUser } = userSlice.actions;
 export default userSlice.reducer;

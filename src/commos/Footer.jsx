@@ -11,19 +11,12 @@ function Footer() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        borderTop:"solid 1px white",
-        fontFamily:"monospace",
-        fontSize:"1.05rem"
+        borderTop: "solid 1px white",
+        fontFamily: "monospace",
+        fontSize: "1.05rem",
       }}
     >
-
-<p>2023 - Francisco Mackinnon - Todos los derechos reservados</p>
-
-
-
-
-
-     
+      <p>2023 - Francisco Mackinnon - Todos los derechos reservados</p>
     </Box>
   );
 }

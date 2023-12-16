@@ -48,15 +48,14 @@ function ModalRegister() {
     setUrl_img("");
   };
 
-
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     const maxSizeInBytes = 1024 * 60;
 
     if (file && file.size > maxSizeInBytes) {
-			setShowModal(true);
-			return;
-		}
+      setShowModal(true);
+      return;
+    }
     const reader = new FileReader();
     reader.onload = () => {
       setUrl_img(reader.result);
@@ -64,15 +63,9 @@ function ModalRegister() {
     reader.readAsDataURL(file);
   };
 
-  const handleCloseModal=()=>{
-
-    setShowModal(false)
-
-  }
-
-
-
-
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
 
   const singUpForm = useFormik({
     initialValues: {
@@ -82,7 +75,7 @@ function ModalRegister() {
       email: "",
       password: "",
       confirmPassword: "",
-      url_img:""
+      url_img: "",
     },
     validationSchema: Yup.object({
       name: Yup.string()
@@ -106,8 +99,7 @@ function ModalRegister() {
         .matches(/[A-Z]/, "password must contain at least one capital letter")
         .required("password is required"),
 
-      confirmPassword: Yup.string()
-      .required("password is required"),
+      confirmPassword: Yup.string().required("password is required"),
     }),
 
     onSubmit: (values) => {
@@ -124,7 +116,7 @@ function ModalRegister() {
           username: values.username,
           email: values.email,
           password: values.password,
-          url_img:url_img
+          url_img: url_img,
         })
 
         .then((res) => {
@@ -151,7 +143,7 @@ function ModalRegister() {
     <Modal
       open={modalOpen}
       sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
-      >
+    >
       <Box
         component="form"
         onSubmit={singUpForm.handleSubmit}
@@ -159,7 +151,7 @@ function ModalRegister() {
           backgroundColor: "#080f28",
           width: "30vw",
           display: "flex",
-          borderRadius:"5%",
+          borderRadius: "5%",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "space-between",
@@ -174,38 +166,49 @@ function ModalRegister() {
           },
         }}
       >
-        <ModalImageTooLarge showModal={showModal} handleCloseModal={handleCloseModal}/>
+        <ModalImageTooLarge
+          showModal={showModal}
+          handleCloseModal={handleCloseModal}
+        />
         <Box sx={{ display: "flex", justifyContent: "end", width: "100%" }}>
           {" "}
-          <CloseIcon onClick={handleModal} sx={{color:"white", marginTop:"1%",marginLeft:"1%","&:hover":{color:"red"}}} />
+          <CloseIcon
+            onClick={handleModal}
+            sx={{
+              color: "white",
+              marginTop: "1%",
+              marginLeft: "1%",
+              "&:hover": { color: "red" },
+            }}
+          />
         </Box>
 
-        <Typography variant="h4" sx={{ margin:"5% 0",color:"white" }}>
+        <Typography variant="h4" sx={{ margin: "5% 0", color: "white" }}>
           Register
         </Typography>
 
         <input
-                id="user_image"
-                type="file"
-                accept="image/*"
-                style={{ display: "none" }}
-                onChange={handleImageUpload}
-              />
-              <label htmlFor="user_image">
-
-        { url_img ?  (<Avatar
-
-        src={url_img}
-        
-        sx={{ height: 110, width: 110, margin: "5% 0" }}></Avatar>):singUpForm.values.name && singUpForm.values.lastname ? (<Avatar sx={{ height: 120, width: 120, margin: "5% 0" }} >
-          {`${singUpForm.values.name[0]}${singUpForm.values.lastname[0]}`}
-        </Avatar>
-
-        ):(<Avatar sx={{ height: 110, width: 110, margin: "5% 0" }}></Avatar>)}
-
-
+          id="user_image"
+          type="file"
+          accept="image/*"
+          style={{ display: "none" }}
+          onChange={handleImageUpload}
+        />
+        <label htmlFor="user_image">
+          {url_img ? (
+            <Avatar
+              src={url_img}
+              sx={{ height: 110, width: 110, margin: "5% 0" }}
+            ></Avatar>
+          ) : singUpForm.values.name && singUpForm.values.lastname ? (
+            <Avatar sx={{ height: 120, width: 120, margin: "5% 0" }}>
+              {`${singUpForm.values.name[0]}${singUpForm.values.lastname[0]}`}
+            </Avatar>
+          ) : (
+            <Avatar sx={{ height: 110, width: 110, margin: "5% 0" }}></Avatar>
+          )}
         </label>
-        <Stack spacing={1} sx={{ width: "50%",marginTop:"5%" }}>
+        <Stack spacing={1} sx={{ width: "50%", marginTop: "5%" }}>
           <TextField
             label="Name"
             type="text"
@@ -224,17 +227,16 @@ function ModalRegister() {
               )
             }
             InputProps={{
-              style:{color: "white",},
+              style: { color: "white" },
               startAdornment: (
                 <InputAdornment position="start"></InputAdornment>
               ),
-            }
-          }
-          InputLabelProps={{
-            style: {
-              color: "white"
             }}
-          }
+            InputLabelProps={{
+              style: {
+                color: "white",
+              },
+            }}
           />
 
           <TextField
@@ -255,7 +257,7 @@ function ModalRegister() {
               )
             }
             InputProps={{
-              style:{color: "white",},
+              style: { color: "white" },
               startAdornment: (
                 <InputAdornment position="start"></InputAdornment>
               ),
@@ -279,16 +281,16 @@ function ModalRegister() {
               )
             }
             InputProps={{
-              style:{color: "white",},
+              style: { color: "white" },
               startAdornment: (
                 <InputAdornment position="start"></InputAdornment>
               ),
             }}
             InputLabelProps={{
               style: {
-                color: "white"
-              }}
-            }
+                color: "white",
+              },
+            }}
           />
           <TextField
             label="Email"
@@ -308,7 +310,7 @@ function ModalRegister() {
               )
             }
             InputProps={{
-              style:{color: "white",},
+              style: { color: "white" },
               startAdornment: (
                 <InputAdornment position="start"></InputAdornment>
               ),
@@ -332,7 +334,7 @@ function ModalRegister() {
               )
             }
             InputProps={{
-              style:{color: "white",},
+              style: { color: "white" },
               startAdornment: (
                 <InputAdornment position="start"></InputAdornment>
               ),
@@ -340,9 +342,9 @@ function ModalRegister() {
             }}
             InputLabelProps={{
               style: {
-                color: "white"
-              }}
-            }
+                color: "white",
+              },
+            }}
           />
           <TextField
             label="Confirm password"
@@ -359,16 +361,16 @@ function ModalRegister() {
               errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>
             }
             InputProps={{
-              style:{color: "white",},
+              style: { color: "white" },
               startAdornment: (
                 <InputAdornment position="start"></InputAdornment>
               ),
             }}
             InputLabelProps={{
               style: {
-                color: "white"
-              }}
-            }
+                color: "white",
+              },
+            }}
           />
         </Stack>
         {errorMessage && (
@@ -378,7 +380,11 @@ function ModalRegister() {
             </Alert>
           </Box>
         )}
-        <Button type="submit" variant="contained" sx={{ margin: "5% 0", backgroundColor:"#ea0505" }}>
+        <Button
+          type="submit"
+          variant="contained"
+          sx={{ margin: "5% 0", backgroundColor: "#ea0505" }}
+        >
           Submit
         </Button>
       </Box>

@@ -1,15 +1,13 @@
 import React from "react";
 import {
-  
-    
-    Button,
-    Dialog,
-      DialogActions,
-      DialogContent,
-      DialogTitle,
-  } from "@mui/material";
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+} from "@mui/material";
 
-function ModalImageTooLarge({showModal,handleCloseModal}) {
+function ModalImageTooLarge({ showModal, handleCloseModal }) {
   return (
     <>
       <Dialog open={showModal} onClose={handleCloseModal}>

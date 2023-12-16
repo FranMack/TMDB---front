@@ -59,8 +59,6 @@ function Home() {
       });
   }, [movieOrTv]);
 
-
-  
   return (
     <>
       {movies.length > 0 ? (

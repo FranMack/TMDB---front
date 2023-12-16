@@ -58,8 +58,7 @@ function ModalLogin() {
     validationSchema: Yup.object({
       email: Yup.string().email("invalid email").required("email is required"),
 
-      password: Yup.string()
-      .required("password is required"),
+      password: Yup.string().required("password is required"),
     }),
 
     onSubmit: (values) => {
@@ -74,25 +73,22 @@ function ModalLogin() {
         )
 
         .then((response) => {
-          axios
-            dispatch(setUser(response.data.payload))
+          axios;
+          dispatch(setUser(response.data.payload));
 
-            return response.data.payload.email
-           
+          return response.data.payload.email;
         })
-        .then((email)=>{
+        .then((email) => {
           axios
-          .get(`http://localhost:3000/api/user/info/${email}`,{ withCredentials: true })
-          .then((res)=>{
-            dispatch(setUser(res.data))
-            toast.success("Login ok");
-            singUpForm.resetForm();
-            handleModal();
-
-          })
-        
-         
-
+            .get(`http://localhost:3000/api/user/info/${email}`, {
+              withCredentials: true,
+            })
+            .then((res) => {
+              dispatch(setUser(res.data));
+              toast.success("Login ok");
+              singUpForm.resetForm();
+              handleModal();
+            });
         })
 
         .catch((error) => {
@@ -124,7 +120,7 @@ function ModalLogin() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "space-between",
-          borderRadius:"5%",
+          borderRadius: "5%",
           "& .MuiInput-underline:before": {
             borderBottomColor: "white", // Cambia el color de la línea antes del input
           },
@@ -134,15 +130,22 @@ function ModalLogin() {
           "& .MuiInput-underline:focus": {
             borderBottomColor: "white", // Cambia el color de la línea después del input
           },
-          
         }}
       >
         <Box sx={{ display: "flex", justifyContent: "end", width: "100%" }}>
           {" "}
-          <CloseIcon onClick={handleModal} sx={{color:"white", marginTop:"1%",marginLeft:"3%","&:hover":{color:"red"}}} />
+          <CloseIcon
+            onClick={handleModal}
+            sx={{
+              color: "white",
+              marginTop: "1%",
+              marginLeft: "3%",
+              "&:hover": { color: "red" },
+            }}
+          />
         </Box>
 
-        <Typography variant="h4" sx={{ marginTop: "5%", color:"white" }}>
+        <Typography variant="h4" sx={{ marginTop: "5%", color: "white" }}>
           TMDB
         </Typography>
 
@@ -165,17 +168,16 @@ function ModalLogin() {
               )
             }
             InputProps={{
-              style:{color: "white",},
+              style: { color: "white" },
               startAdornment: (
                 <InputAdornment position="start"></InputAdornment>
               ),
-            }
-          }
-          InputLabelProps={{
-            style: {
-              color: "white"
             }}
-          }
+            InputLabelProps={{
+              style: {
+                color: "white",
+              },
+            }}
           />
           <TextField
             label="Password"
@@ -195,35 +197,41 @@ function ModalLogin() {
               )
             }
             InputProps={{
-              style:{color: "white"},
+              style: { color: "white" },
               startAdornment: (
                 <InputAdornment position="start"></InputAdornment>
               ),
               endAdornment: <VisibilityIcon onClick={handleShowPassword} />,
             }}
-
             InputLabelProps={{
               style: {
                 color: "white",
-              }}
-            }
-            
+              },
+            }}
           />
         </Stack>
         {errorMessage && (
           <Box sx={{ marginTop: 2 }}>
-            <Alert severity="error" variant="outlined" sx={{color:"#ea0505"}}>
+            <Alert
+              severity="error"
+              variant="outlined"
+              sx={{ color: "#ea0505" }}
+            >
               {errorMessage}
             </Alert>
           </Box>
         )}
-        <Button type="submit" variant="contained" sx={{ margin: "5% 0", backgroundColor:"#ea0505"}}>
+        <Button
+          type="submit"
+          variant="contained"
+          sx={{ margin: "5% 0", backgroundColor: "#ea0505" }}
+        >
           Login
         </Button>
         <Button
           onClick={handleModalRegister}
           variant="text"
-          sx={{ margin: "1% 0",marginBottom:"3%" }}
+          sx={{ margin: "1% 0", marginBottom: "3%" }}
         >
           Singup
         </Button>

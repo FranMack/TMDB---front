@@ -67,7 +67,7 @@ function MovieInfo() {
       });
   };
 
-  console.log("infoooooooo",movieInfo)
+  console.log("infoooooooo", movieInfo);
   return (
     <>
       {movieInfo.id ? (
@@ -99,8 +99,7 @@ function MovieInfo() {
             <p>{movieInfo.overview}</p>
             <p>
               <span style={{ fontWeight: "bold" }}>Estreno:</span>{" "}
-              {`${movieInfo.release_date || movieInfo.first_air_date
-}`}
+              {`${movieInfo.release_date || movieInfo.first_air_date}`}
             </p>
             <p>
               <span style={{ fontWeight: "bold" }}>Duración:</span>{" "}
