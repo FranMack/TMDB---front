@@ -1,0 +1,219 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+#root {
+  background-color: #080f28;
+  color: white;
+}
+
+
+a {
+  text-decoration: none;
+}
+
+.grilla {
+  padding-top: 12vh;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(150px, 1fr));
+  width: 80vw;
+  row-gap: 25px;
+  justify-items: center;
+}
+
+.card {
+  height: 50vh;
+  width: 80%;
+  text-align: center;
+  margin-bottom: 15%;
+  text-decoration: none;
+}
+
+.cardInfo {
+  margin-top: 3%;
+  font-size: 1.1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  color: #f7a102;
+}
+
+.carruselCard {
+  margin: 0 auto;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  transition-duration: 1000ms; /* Duración de la transición */
+}
+
+.changingImage {
+  opacity: 0; /* Puedes ajustar la opacidad según tus necesidades */
+  transform: scale(1.1);
+}
+
+.carruselInfo {
+  background-color: rgba(12, 12, 12, 0.5);
+  padding: 2%;
+  position: absolute;
+  left: 2%;
+  top: 20%;
+  color: #ffff;
+  width: 25%;
+  font-family: sans-serif;
+}
+
+.carruselInfo h1 {
+  font-size: 3rem;
+  margin-bottom: 3%;
+}
+
+.carruselInfo p {
+  font-size: 1.2rem;
+  margin-bottom: 3%;
+  line-height: 1.5;
+}
+
+.movie-info {
+  background-color: rgba(12, 12, 12, 0.5);
+  padding: 2%;
+  position: absolute;
+  left: 2%;
+  top: 15%;
+  color: #ffff;
+  width: 40%;
+  font-family: sans-serif;
+}
+
+.movie-info h1 {
+  font-size: 3rem;
+  margin-bottom: 3%;
+}
+
+.movie-info p {
+  font-size: 1.3rem;
+  margin-bottom: 3%;
+  line-height: 1.5;
+}
+
+.pelotita {
+  background: grey;
+  height: 7px;
+  width: 7px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+.pelotita-selecionada {
+  background: #f7a102;
+  height: 7px;
+  width: 7px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+.box-pelotitas {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  position: relative;
+  bottom: 5vh;
+}
+
+.horizontal-scroll-container {
+  width: 100%;
+  overflow-x: scroll;
+  height: 350px;
+}
+
+.image-list {
+  display: flex;
+  flex-wrap: nowrap;
+  /* Espacio entre imágenes */
+}
+
+.card-scroll {
+  text-align: center;
+  margin-right: 10px;
+  flex-shrink: 0;
+  width: 240px;
+  height: 310px;
+  transition-duration: 1000ms;
+}
+
+.cardInfo-scroll {
+  margin-top: 3%;
+  color: #ffff;
+  font-weight: bolder;
+  font-size: 1.4rem;
+  font-family: Arial, Helvetica, sans-serif;
+  opacity: 0;
+  position: relative;
+  top: -50%;
+  text-decoration: none;
+  transition-duration: 1000ms;
+}
+
+.cardImage-scroll {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+  transition-duration: 1000ms;
+}
+
+.card-scroll:hover .cardImage-scroll {
+  transform: scale(1.1);
+  opacity: 0.5;
+  color: #f7a102;
+}
+
+.card-scroll:hover .cardInfo-scroll {
+  opacity: 1;
+}
+
+.titulo-seccion {
+  font-family: sans-serif;
+  font-size: 1.7rem;
+  font-weight: 400;
+  margin: 2% 2%;
+}
+
+.info-movie {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.info-movie-image {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height:100%;
+}
+
+::-webkit-scrollbar {
+  width: 10px; /* Ancho de la barra de desplazamiento */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 5px; /* Radio de borde del dedo de la barra de desplazamiento */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #080f28; /* Color de fondo de la pista de la barra de desplazamiento */
+}
