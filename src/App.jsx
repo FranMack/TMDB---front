@@ -9,7 +9,7 @@ import MovieInfo from "./view/movieInfo";
 import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from "react-toastify";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { setUser } from "./redux/user.slice";
 import { useNavigate } from "react-router-dom";
 import { Routes, Route } from "react-router";
@@ -17,6 +17,8 @@ import ModalRegister from "./commos/modalRegister";
 import ModalLogin from "./commos/modalLogin";
 import GrillaMovies from "./content/grillaMovies";
 import { useLocation } from "react-router-dom";
+import NotFound from "./view/notFound";
+import Forbidden from "./view/forbidden";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,6 +28,11 @@ function App() {
   const location2 = useLocation().pathname.split("/");
   location2.pop();
   let pathEraseNavigate = location2.join("/");
+  const userLogged=useSelector((state)=>state.user.name)
+
+  if(userLogged){
+    console.log("xxxxxxxx",userLogged)
+  }
 
   const [path, setPath] = useState("");
 
@@ -129,10 +136,15 @@ function App() {
         <Route path="tv" element={<Series />} />
         <Route path="/:type/:id" element={<MovieInfo />} />
 
-        <Route
+       {userLogged ? (<Route
           path="favorites"
           element={<Favorites cleanSearch={cleanSearch} />}
-        />
+        />):((<Route
+          path="favorites"
+          element={<Forbidden/>}
+        />))
+        }
+
         <Route
           path="/:type/:id/search"
           element={
@@ -160,6 +172,7 @@ function App() {
             />
           }
         />
+      <Route path="*" element={<NotFound/>} />
       </Routes>
       <Footer />
     </>

@@ -3,6 +3,7 @@ import { Modal, Box } from "@mui/material";
 import YouTube from "react-youtube";
 import CloseIcon from "@mui/icons-material/Close";
 
+
 function ModalTrailler({ open, videoId, close }) {
   return (
     <Modal
