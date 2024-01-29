@@ -6,10 +6,12 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setUser } from "../redux/user.slice";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 export default function DropDown({ open, anchorEl, handleClose }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location=useLocation().pathname.slice(1)
 
   const handleLogout = () => {
     axios
@@ -21,6 +23,10 @@ export default function DropDown({ open, anchorEl, handleClose }) {
       .then(() => {
         dispatch(setUser({}));
         handleClose();
+        if(location==="favorites"){
+          navigate("/")
+        }
+        
       })
       .catch((error) => {
         console.log(error);

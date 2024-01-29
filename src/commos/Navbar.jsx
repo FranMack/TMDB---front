@@ -83,14 +83,7 @@ function Navbar({
           color: "white",
         }}
       >
-        <Typography
-          onClick={handleHome}
-          variant="h5"
-          component="h2"
-          sx={{ marginRight: "5%", "&:hover": { color: "#f7a102" } }}
-        >
-          Home
-        </Typography>
+     
         <Typography
         onClick={handleHome}
           variant="h5"

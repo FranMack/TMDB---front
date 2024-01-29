@@ -177,7 +177,7 @@ function ModalRegister() {
             sx={{
               color: "white",
               marginTop: "1%",
-              marginLeft: "1%",
+              marginRight: "2%",
               "&:hover": { color: "red" },
             }}
           />

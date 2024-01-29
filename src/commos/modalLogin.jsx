@@ -4,14 +4,11 @@ import axios from "axios";
 import {
   Box,
   Modal,
-  FormControl,
-  FormHelperText,
   Alert,
   TextField,
   InputAdornment,
   Stack,
   Button,
-  Avatar,
   Typography,
 } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
@@ -139,7 +136,7 @@ function ModalLogin() {
             sx={{
               color: "white",
               marginTop: "1%",
-              marginLeft: "3%",
+              marginRight: "2%",
               "&:hover": { color: "red" },
             }}
           />
