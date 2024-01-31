@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Button, Typography } from '@mui/material';
 import { Link } from "react-router-dom";
 
-const NotFound=()=>{
+const NoHayFavoritos=()=>{
 
     return(
         <Box
@@ -16,10 +16,10 @@ const NotFound=()=>{
       }}
     >
       <Typography variant="h1" style={{ color: 'white' }}>
-        403
+       No hay favoritos
       </Typography>
       <Typography variant="h6" style={{ color: 'white' }}>
-        Forbidden: Debe estar loggueado para poder acceder a favoritos
+        Aun no ha agregado peliculas/series a favoritos.
       </Typography>
       <Button variant="outlined" component={Link} to="/" sx={{
         marginTop:"3%",
@@ -36,4 +36,4 @@ const NotFound=()=>{
 
 }
 
-export default NotFound;
+export default NoHayFavoritos;

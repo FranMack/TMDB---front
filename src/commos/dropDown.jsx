@@ -7,6 +7,8 @@ import { useDispatch } from "react-redux";
 import { setUser } from "../redux/user.slice";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { setModalProfileState } from "../redux/modalProfile";
+
 
 export default function DropDown({ open, anchorEl, handleClose }) {
   const dispatch = useDispatch();
@@ -35,7 +37,13 @@ export default function DropDown({ open, anchorEl, handleClose }) {
 
   const handleFavorites = () => {
     navigate("/favorites");
+    handleClose()
   };
+
+  const handleModalProfile=()=>{
+    dispatch(setModalProfileState({ modalOpen: true }));
+    handleClose()
+  }
 
   return (
     <Menu
@@ -47,7 +55,7 @@ export default function DropDown({ open, anchorEl, handleClose }) {
         "aria-labelledby": "basic-button",
       }}
     >
-      <MenuItem>Profile</MenuItem>
+      <MenuItem onClick={handleModalProfile}>Profile</MenuItem>
       <MenuItem onClick={handleFavorites}>Favorites</MenuItem>
       <MenuItem onClick={handleLogout}>Logout</MenuItem>
     </Menu>

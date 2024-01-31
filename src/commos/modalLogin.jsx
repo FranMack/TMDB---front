@@ -106,6 +106,7 @@ function ModalLogin() {
       sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
     >
       <Box
+      id="modalLogin"
         component="form"
         onSubmit={singUpForm.handleSubmit}
         sx={{

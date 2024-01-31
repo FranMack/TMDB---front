@@ -8,6 +8,9 @@
   background-color: #080f28;
   color: white;
 }
+body{
+  overflow-x: hidden;
+}
 
 a {
   text-decoration: none;
@@ -31,6 +34,7 @@ a {
   text-decoration: none;
   position: relative;
   background-color: red;
+  transition: 0.5s;
   
 }
 
@@ -44,8 +48,8 @@ a {
 .cardImage {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
+  object-fit:cover;
+ object-position:top;
 
 }
 
@@ -63,6 +67,9 @@ a {
   position: relative;
   transition-duration: 1000ms; /* Duración de la transición */
 }
+.carruselCard ::-webkit-scrollbar-track {
+  background-color: transparent; /* Color de fondo de la pista de la barra de desplazamiento */
+}
 
 .changingImage {
   opacity: 0; /* Puedes ajustar la opacidad según tus necesidades */
@@ -76,9 +83,13 @@ a {
   left: 2%;
   top: 20%;
   color: #ffff;
-  width: 25%;
+  width: 50%;
+  max-height: 70%;
+  overflow-y: scroll;
   font-family: sans-serif;
 }
+
+
 
 .carruselInfo h1 {
   font-size: 3rem;
@@ -98,8 +109,14 @@ a {
   left: 2%;
   top: 15%;
   color: #ffff;
-  width: 45%;
+  max-width: 60%;
+  max-height: 80%;
+  overflow-y: scroll;
   font-family: sans-serif;
+}
+
+.movie-info::-webkit-scrollbar-track {
+  background-color: transparent; /* Color de fondo de la pista de la barra de desplazamiento */
 }
 
 .movie-info h1 {
@@ -137,12 +154,21 @@ a {
 }
 
 .horizontal-scroll-container {
-  width: 100%;
+  width: 96%;
+  margin: 0 auto;
   overflow-x: scroll;
   height: 350px;
   scroll-behavior: smooth;
   
+  
 }
+
+.horizontal-scroll-container::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 5px; /* Radio de borde del dedo de la barra de desplazamiento */
+}
+
+
 
 .image-list {
   display: flex;
@@ -203,6 +229,8 @@ a {
   overflow: hidden;
 }
 
+
+
 .info-movie-image {
   object-fit: cover;
   object-position: center;
@@ -211,14 +239,124 @@ a {
 }
 
 ::-webkit-scrollbar {
-  width: 10px; /* Ancho de la barra de desplazamiento */
+  width: 12px; /* Ancho de la barra de desplazamiento */
+ 
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: transparent;
+  background-color: #f7a102;
+  height:10%;
   border-radius: 5px; /* Radio de borde del dedo de la barra de desplazamiento */
 }
 
 ::-webkit-scrollbar-track {
   background-color: #080f28; /* Color de fondo de la pista de la barra de desplazamiento */
+}
+
+
+
+#mobilieNavbar{
+
+display: none;
+}
+
+
+@media screen and (max-width: 1300px) {
+  .grilla {
+    padding-top: 12vh;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(150px, 1fr));
+    width: 80vw;
+    row-gap: 25px;
+    justify-items: center;
+  }
+}
+
+
+@media screen and (max-width: 1000px) {
+  .grilla {
+    padding-top: 12vh;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(150px, 1fr));
+    width: 80vw;
+    row-gap: 25px;
+    justify-items: center;
+  }
+  #modalLogin{
+    width: 50%;
+  }
+  #modalRegister{
+    width: 50%;
+  }
+  #modalProfile{
+    width: 50%;
+  }
+  
+}
+
+
+
+
+@media screen and (max-width: 600px) {
+  .carruselInfo {
+    background-color: rgba(12, 12, 12, 0.5);
+    padding: 2%;
+    position: absolute;
+    left: 0%;
+    right: 2%;
+    top: 20%;
+    color: #ffff;
+    width: 100%;
+    max-height: 70%;
+    overflow-y: scroll;
+    font-family: sans-serif;
+  }
+
+  .movie-info {
+    background-color: rgba(12, 12, 12, 0.5);
+    padding: 2%;
+    position: absolute;
+    left: 0%;
+    top: 15%;
+    color: #ffff;
+    max-width: 100%;
+    max-height: 80%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    font-family: sans-serif;
+  }
+
+  #navbar{
+  
+  position: fixed;
+  display: none;
+}
+#mobilieNavbar{
+
+  display:flex;
+  }
+
+  .grilla {
+    padding-top: 12vh;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(1, minmax(150px, 1fr));
+    width: 80vw;
+    row-gap: 25px;
+    justify-items: center;
+  }
+
+  #modalLogin{
+    width: 90%;
+  }
+  #modalRegister{
+    width: 90%;
+  }
+  #modalProfile{
+    width: 90%;
+  }
+  
+
 }

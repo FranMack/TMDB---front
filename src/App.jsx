@@ -17,7 +17,9 @@ import ModalRegister from "./commos/modalRegister";
 import ModalLogin from "./commos/modalLogin";
 import GrillaMovies from "./content/grillaMovies";
 import { useLocation } from "react-router-dom";
-import NotFound from "./view/notFound";
+import NavbarMobile from "./commos/NavbarMobile";
+
+import ModalProfile from "./commos/modalProfile";
 
 
 function App() {
@@ -120,6 +122,12 @@ function App() {
       <ToastContainer />
       <ModalLogin />
       <ModalRegister />
+      <ModalProfile/>
+      <NavbarMobile 
+        showMovies={showMovies}
+        searchValue={searchValue}
+        handleSearch={handleSearch}
+        cleanSearch={cleanSearch}/>
       <Navbar
         showTv={showTv}
         showMovies={showMovies}
@@ -164,7 +172,7 @@ function App() {
             />
           }
         />
-        <Route path="*" element={<NotFound />} />
+    
       </Routes>
       <Footer />
     </>

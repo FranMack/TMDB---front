@@ -4,7 +4,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import GrillaMovies from "../content/grillaMovies";
 import Loading from "../commos/Loading";
-import Forbidden from "./forbidden";
+import NoHayFavoritos from "./NoHayFavoritos";
+import { Navigate } from "react-router-dom";
 
 
 function Favorites({ cleanSearch }) {
@@ -15,7 +16,9 @@ function Favorites({ cleanSearch }) {
   const [favoritesMovies, setFavoritesMovies] = useState(null);
   
 
+
   useEffect(() => {
+    
     if (userId) {
       axios
         .get(`http://localhost:3000/api/user/favorites?userId=${userId}`, {
@@ -64,21 +67,30 @@ function Favorites({ cleanSearch }) {
     }
   };
 
-  console.log("moviesInfo", favoritesMovies);
-  return (
+   window.scrollTo(0,0)
+
+   console.log("xxxxxxxxxx",favoritesMovies)
+   return (
     <>
-    
-      {userLogged ?  (<div style={{ minHeight: "88vh" }}>
-        {favoritesMovies ? (
-          <GrillaMovies
-            movies={favoritesMovies}
-            cleanSearch={cleanSearch}
-            handleDeleteFavorite={handleDeleteFavorite}
-          />
-        ) : (
-          <Loading />
-        )}
-      </div>):(<Forbidden/>)}
+      {userLogged ? (
+        <div style={{ minHeight: "88vh" }}>
+          {favoritesMovies !== null ? (
+            favoritesMovies.length > 0 ? (
+              <GrillaMovies
+                movies={favoritesMovies}
+                cleanSearch={cleanSearch}
+                handleDeleteFavorite={handleDeleteFavorite}
+              />
+            ) : (
+              <NoHayFavoritos/>
+            )
+          ) : (
+            <Loading />
+          )}
+        </div>
+      ) : (
+        <Navigate to="/" />
+      )}
     </>
   );
 }

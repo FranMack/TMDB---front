@@ -12,7 +12,7 @@ const Forbidden=()=>{
         alignItems: 'center',
         flexDirection: 'column',
         minHeight: '100vh',
-        backgroundColor: "#bed733",
+        backgroundColor: "#080f28",
       }}
     >
       <Typography variant="h1" style={{ color: 'white' }}>

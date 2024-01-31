@@ -4,8 +4,6 @@ import axios from "axios";
 import {
   Box,
   Modal,
-  FormControl,
-  FormHelperText,
   Alert,
   TextField,
   InputAdornment,
@@ -142,9 +140,10 @@ function ModalRegister() {
   return (
     <Modal
       open={modalOpen}
-      sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+      sx={{ display: "flex", alignItems: "center", justifyContent: "center", overflow:"scroll" }}
     >
       <Box
+      id="modalRegister"
         component="form"
         onSubmit={singUpForm.handleSubmit}
         sx={{
@@ -262,6 +261,11 @@ function ModalRegister() {
                 <InputAdornment position="start"></InputAdornment>
               ),
             }}
+            InputLabelProps={{
+              style: {
+                color: "white",
+              },
+            }}
           />
           <TextField
             label="Username"
@@ -314,6 +318,11 @@ function ModalRegister() {
               startAdornment: (
                 <InputAdornment position="start"></InputAdornment>
               ),
+            }}
+            InputLabelProps={{
+              style: {
+                color: "white",
+              },
             }}
           />
           <TextField

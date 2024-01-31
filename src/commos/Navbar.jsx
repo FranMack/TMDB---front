@@ -1,13 +1,10 @@
-import React, { useEffect } from "react";
 import { Box, Typography, Input, Avatar } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useSelector, useDispatch } from "react-redux";
 import { setModalState } from "../redux/modal.slice";
 import DropDown from "./dropDown";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function Navbar({
@@ -41,6 +38,7 @@ function Navbar({
 
   return (
     <Box
+    id="navbar"
       sx={{
         boxSizing: "border-box",
         margin: "0",

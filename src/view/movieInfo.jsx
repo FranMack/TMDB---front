@@ -56,18 +56,8 @@ function MovieInfo() {
     }
   };
 
-  const playTrailer = () => {
-    axios
-      .get(`http://localhost:3000/api/content/movie/info/${id}/videos`)
-      .then((response) => {
-        setTrailers(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  window.scrollTo(0, 0);
 
-  console.log("infoooooooo", movieInfo);
   return (
     <>
       {movieInfo.id ? (

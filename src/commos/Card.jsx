@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setModalConfirmState } from "../redux/modalConfirm";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ModalConfirm from "./modalConfirm";
+import notFound from "../assets/not-found.jpg"
+
 
 
 
@@ -55,7 +57,7 @@ function Card({ movie, cleanSearch,handleDeleteFavorite }) {
           />
         )}
         <img
-        onClick={()=>{alert(`soy el id ${movie.id}`)}}
+        onClick={()=>{handleMovie()}}
           className="cardImage"
           src={
             movie.backdrop_path && !movie.poster_path
