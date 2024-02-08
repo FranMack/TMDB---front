@@ -34,7 +34,7 @@ function Series() {
         console.log(error);
       });
 
-    let list = "popular";
+    let list = "top_rated";
     axios
       .get(`http://localhost:3000/api/content/${type}/${list}`)
       .then((res) => setSeriesPopular(res.data.results))
@@ -70,7 +70,7 @@ function Series() {
             handleNumRight={handleNumRight}
             handleNumLeft={handleNumLeft}
           />
-          <h1 className="titulo-seccion">Populares</h1>
+          <h1 className="titulo-seccion">Top Rated</h1>
           <HorizontalScroll movies={seriesPopular} />
           <h1 className="titulo-seccion">On the air</h1>
           <HorizontalScroll movies={seriesOnAir} />
