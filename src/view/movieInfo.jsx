@@ -7,6 +7,8 @@ import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import ModalTrailler from "../commos/modalTrailler";
 import Loading from "../commos/Loading";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 function MovieInfo() {
   const IMG_API = "https://image.tmdb.org/t/p/w500/";
@@ -15,6 +17,7 @@ function MovieInfo() {
 
   const [movieInfo, setMovieInfo] = useState({});
   const [modalOpen, setModalOpen] = useState(false);
+  const [isFavorite, setisFavorite] = useState(false);
 
   const handleModal = () => {
     setModalOpen(true);
@@ -30,13 +33,22 @@ function MovieInfo() {
       .then((response) => {
         setMovieInfo(response.data);
       })
+      .then(()=>{
+        return axios.get(`http://localhost:3000/api/user/isFavorite/${id}`)
+        .then((response)=>{
+          if(response.data){
+            setisFavorite(true)
+          }
+        })
+      })
+
       .catch((error) => {
         console.log(error);
       });
-  }, [id, type]);
+  }, [id, type,isFavorite]);
 
   const addFavorite = () => {
-    if (userId && id) {
+    if (id && !isFavorite) {
       axios
         .post(
           `http://localhost:3000/api/user/addFavorite`,
@@ -45,18 +57,30 @@ function MovieInfo() {
         )
         .then((response) => {
           console.log(response.data);
-          toast.success("Agregado a Favoritos");
+          setisFavorite(true)
+          toast.success("Added to Favorites");
         })
         .catch((error) => {
           console.log(error);
           toast.warning(error.response.data.error);
         });
-    } else {
-      toast.error("Debe estar logueado para agregar favoritos");
+    } 
+    if(id && isFavorite){
+      axios
+        .delete("http://localhost:3000/api/user/deleteFavorite", {
+          params: {
+            userId: userId,
+            movieId: id,
+          }})
+          .then(()=>{
+            setisFavorite(false)
+            toast.success("Deleted to Favorites");})
+
     }
   };
 
   window.scrollTo(0, 0);
+
 
   return (
     <>
@@ -84,7 +108,7 @@ function MovieInfo() {
               alt={`${movieInfo.title}`}
             />
           </div>
-          <div className="movie-info">
+          <div id="ventana" className="movie-info">
             <h1>{movieInfo.title}</h1>
             <p>{movieInfo.overview}</p>
             <p>
@@ -104,6 +128,7 @@ function MovieInfo() {
                 width: "100%",
                 display: "flex",
                 justifyContent: "start",
+                alignItems:"center"
               }}
             >
               {movieInfo.videos.results.length > 0 && (
@@ -111,7 +136,6 @@ function MovieInfo() {
                   onClick={handleModal}
                   variant="contained"
                   sx={{
-                    marginTop: "5%",
                     marginRight: "5%",
                     backgroundColor: "#ea0505",
                   }}
@@ -119,13 +143,9 @@ function MovieInfo() {
                   Trailer
                 </Button>
               )}
-              <Button
-                onClick={addFavorite}
-                variant="contained"
-                sx={{ marginTop: "5%", backgroundColor: "#ea0505" }}
-              >
-                Fav
-              </Button>
+              {userId && (
+                <>{isFavorite ? <FavoriteIcon onClick={addFavorite}  sx={{fontSize:"3rem",color: "#ea0505",}}/> : <FavoriteBorderIcon onClick={addFavorite} sx={{fontSize:"3rem",color: "#ea0505",}} />}</>
+              )}
             </div>
           </div>
         </>

@@ -76,7 +76,7 @@ function NavbarMobile({
         >
           <Input
             disableUnderline
-            placeholder="Buscar"
+            placeholder="Search"
             value={searchValue}
             onChange={handleSearch}
             sx={{ outline: "none", border: "none", marginLeft: "10px" }}

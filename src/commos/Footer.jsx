@@ -20,7 +20,7 @@ function Footer() {
         textAlign:"center"
       }}
     >
-      <p>{year} - Francisco Mackinnon - Todos los derechos reservados</p>
+      <p>{year} - Francisco Mackinnon - All rights reserved</p>
     </Box>
   );
 }

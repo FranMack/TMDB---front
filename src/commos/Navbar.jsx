@@ -88,7 +88,7 @@ function Navbar({
           component="h2"
           sx={{ marginRight: "5%", "&:hover": { color: "#f7a102" } }}
         >
-          Peliculas
+          Movies
         </Typography>
         <Link style={{textDecoration:"none",color: "inherit"  }} to="tv">
         <Typography
@@ -96,7 +96,7 @@ function Navbar({
           component="h2"
           sx={{ marginRight: "5%", "&:hover": { color: "#f7a102" }}}
         >
-          Series
+          TV
         </Typography>
         </Link>
       </Box>
@@ -122,7 +122,7 @@ function Navbar({
         >
           <Input
             disableUnderline
-            placeholder="Buscar"
+            placeholder="Search"
             value={searchValue}
             onChange={handleSearch}
             sx={{ outline: "none", border: "none", marginLeft: "10px" }}

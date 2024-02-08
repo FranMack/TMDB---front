@@ -12,9 +12,10 @@ import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import LogoutIcon from "@mui/icons-material/Logout";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import NightlightRoundIcon from "@mui/icons-material/NightlightRound";
 import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import MovieCreationIcon from '@mui/icons-material/MovieCreation';
+import LiveTvIcon from '@mui/icons-material/LiveTv';
 import { Avatar, IconButton } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { setUser } from "../redux/user.slice";
@@ -116,6 +117,26 @@ export default function TemporaryDrawer() {
       </List>
       <Divider />
       <List>
+      <ListItem disablePadding onClick={()=>{navigate("/")}}>
+              <ListItemButton>
+                <ListItemIcon>
+                  <IconButton>
+                    <MovieCreationIcon sx={{ fill: "white" }} />
+                  </IconButton>
+                </ListItemIcon>
+                <ListItemText primary="Movies" />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding onClick={()=>{navigate("/tv")}}>
+              <ListItemButton>
+                <ListItemIcon>
+                  <IconButton>
+                    <LiveTvIcon sx={{ fill: "white" }} />
+                  </IconButton>
+                </ListItemIcon>
+                <ListItemText primary="TV" />
+              </ListItemButton>
+            </ListItem>
         {user.name ? (
           <>
             <ListItem disablePadding onClick={handleModalProfile}>
@@ -125,7 +146,7 @@ export default function TemporaryDrawer() {
                     <AccountCircleIcon sx={{ fill: "white" }} />
                   </IconButton>
                 </ListItemIcon>
-                <ListItemText primary="Perfil" />
+                <ListItemText primary="Profile" />
               </ListItemButton>
             </ListItem>
 
@@ -136,7 +157,7 @@ export default function TemporaryDrawer() {
                     <FavoriteIcon sx={{ fill: "white" }} />
                   </IconButton>
                 </ListItemIcon>
-                <ListItemText sx={{ color: "white" }} primary="Favoritos" />
+                <ListItemText sx={{ color: "white" }} primary="Favorites" />
               </ListItemButton>
             </ListItem>
             <ListItem onClick={handleLogout} disablePadding>

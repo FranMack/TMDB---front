@@ -69,7 +69,7 @@ function Favorites({ cleanSearch }) {
 
    window.scrollTo(0,0)
 
-   console.log("xxxxxxxxxx",favoritesMovies)
+ 
    return (
     <>
       {userLogged ? (

@@ -69,7 +69,7 @@ function CarruselCard({ movie, handleNumLeft, handleNumRight }) {
                 variant="contained"
                 sx={{ marginTop: "5%", backgroundColor: "#ea0505" }}
               >
-                Mas info
+                More info
               </Button>
             </Link>
           </div>

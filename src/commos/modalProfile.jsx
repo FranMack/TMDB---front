@@ -377,7 +377,7 @@ function ModalProfile() {
             sx={{ color: "red", margin: "5% 0" }}
           >
             {" "}
-            Cambiar Contraseña
+            Change password
           </Typography>}
 
           {changePassword && (
@@ -387,7 +387,7 @@ function ModalProfile() {
             sx={{ color: "red", margin: "5% auto" }}
           >
             {" "}
-            Ocultar contraseña
+            Hide
           </Typography>
               <TextField
                 label="Password"
