@@ -3,8 +3,7 @@ import { Box, Typography, Input } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
 function Footer() {
-
-  const year= new Date().getFullYear()
+  const year = new Date().getFullYear();
   return (
     <Box
       sx={{
@@ -16,8 +15,8 @@ function Footer() {
         borderTop: "solid 1px white",
         fontFamily: "monospace",
         fontSize: "1.05rem",
-        marginTop:"5%",
-        textAlign:"center"
+        marginTop: "5%",
+        textAlign: "center",
       }}
     >
       <p>{year} - Francisco Mackinnon - All rights reserved</p>

@@ -14,8 +14,8 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import MovieCreationIcon from '@mui/icons-material/MovieCreation';
-import LiveTvIcon from '@mui/icons-material/LiveTv';
+import MovieCreationIcon from "@mui/icons-material/MovieCreation";
+import LiveTvIcon from "@mui/icons-material/LiveTv";
 import { Avatar, IconButton } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { setUser } from "../redux/user.slice";
@@ -117,26 +117,36 @@ export default function TemporaryDrawer() {
       </List>
       <Divider />
       <List>
-      <ListItem disablePadding onClick={()=>{navigate("/")}}>
-              <ListItemButton>
-                <ListItemIcon>
-                  <IconButton>
-                    <MovieCreationIcon sx={{ fill: "white" }} />
-                  </IconButton>
-                </ListItemIcon>
-                <ListItemText primary="Movies" />
-              </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding onClick={()=>{navigate("/tv")}}>
-              <ListItemButton>
-                <ListItemIcon>
-                  <IconButton>
-                    <LiveTvIcon sx={{ fill: "white" }} />
-                  </IconButton>
-                </ListItemIcon>
-                <ListItemText primary="TV" />
-              </ListItemButton>
-            </ListItem>
+        <ListItem
+          disablePadding
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          <ListItemButton>
+            <ListItemIcon>
+              <IconButton>
+                <MovieCreationIcon sx={{ fill: "white" }} />
+              </IconButton>
+            </ListItemIcon>
+            <ListItemText primary="Movies" />
+          </ListItemButton>
+        </ListItem>
+        <ListItem
+          disablePadding
+          onClick={() => {
+            navigate("/tv");
+          }}
+        >
+          <ListItemButton>
+            <ListItemIcon>
+              <IconButton>
+                <LiveTvIcon sx={{ fill: "white" }} />
+              </IconButton>
+            </ListItemIcon>
+            <ListItemText primary="TV" />
+          </ListItemButton>
+        </ListItem>
         {user.name ? (
           <>
             <ListItem disablePadding onClick={handleModalProfile}>

@@ -7,11 +7,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-function Navbar({
-  searchValue,
-  handleSearch,
-  cleanSearch,
-}) {
+function Navbar({ searchValue, handleSearch, cleanSearch }) {
   const dispatch = useDispatch();
   const modal = useSelector((state) => state.modal);
   const navigate = useNavigate();
@@ -38,7 +34,7 @@ function Navbar({
 
   return (
     <Box
-    id="navbar"
+      id="navbar"
       sx={{
         boxSizing: "border-box",
         margin: "0",
@@ -81,23 +77,22 @@ function Navbar({
           color: "white",
         }}
       >
-     
         <Typography
-        onClick={handleHome}
+          onClick={handleHome}
           variant="h5"
           component="h2"
           sx={{ marginRight: "5%", "&:hover": { color: "#f7a102" } }}
         >
           Movies
         </Typography>
-        <Link style={{textDecoration:"none",color: "inherit"  }} to="tv">
-        <Typography
-          variant="h5"
-          component="h2"
-          sx={{ marginRight: "5%", "&:hover": { color: "#f7a102" }}}
-        >
-          TV
-        </Typography>
+        <Link style={{ textDecoration: "none", color: "inherit" }} to="tv">
+          <Typography
+            variant="h5"
+            component="h2"
+            sx={{ marginRight: "5%", "&:hover": { color: "#f7a102" } }}
+          >
+            TV
+          </Typography>
         </Link>
       </Box>
       <Box

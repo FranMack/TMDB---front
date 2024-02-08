@@ -46,7 +46,7 @@ function ModalProfile() {
     singUpForm.resetForm();
     setErrorMessage("");
     setUrl_img("");
-    setChangePassword(false)
+    setChangePassword(false);
   };
 
   const handleImageUpload = (event) => {
@@ -60,15 +60,14 @@ function ModalProfile() {
     const reader = new FileReader();
     reader.onload = () => {
       setUrl_img(reader.result);
-      singUpForm.setValues({...singUpForm.values,url_img:reader.result})
-
+      singUpForm.setValues({ ...singUpForm.values, url_img: reader.result });
     };
     reader.readAsDataURL(file);
   };
 
   const handleCloseModal = () => {
     setShowModal(false);
-    setChangePassword(false)
+    setChangePassword(false);
   };
 
   const handleChangePassword = () => {
@@ -117,21 +116,25 @@ function ModalProfile() {
       username: Yup.string()
         .min(4, "username minimum 4 characters")
         .required("username is required"),
-        
-        password: Yup.string().when("isPasswordProvided", {
-          is: (val) => val && val.length > 0, // Aplicar validación solo si el campo password tiene un valor
-          then: Yup.string()
-            .min(8, "password minimum 8 characters")
-            .matches(
-              /^(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/,
-              "password must contain at least one special character"
-            )
-            .matches(/\d/, "password must contain at least one number")
-            .matches(/[a-z]/, "password must contain at least one lowercase letter")
-            .matches(/[A-Z]/, "password must contain at least one capital letter"),
-        })
-       
-      
+
+      password: Yup.string().when("isPasswordProvided", {
+        is: (val) => val && val.length > 0, // Aplicar validación solo si el campo password tiene un valor
+        then: Yup.string()
+          .min(8, "password minimum 8 characters")
+          .matches(
+            /^(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/,
+            "password must contain at least one special character"
+          )
+          .matches(/\d/, "password must contain at least one number")
+          .matches(
+            /[a-z]/,
+            "password must contain at least one lowercase letter"
+          )
+          .matches(
+            /[A-Z]/,
+            "password must contain at least one capital letter"
+          ),
+      }),
     }),
 
     onSubmit: (values) => {
@@ -140,31 +143,31 @@ function ModalProfile() {
         return;
       }
 
-      
-
       axios
         .put("http://localhost:3000/api/user/editProfile", {
           name: values.name,
           lastname: values.lastname,
           username: values.username,
           email: values.email,
-          password: values.password ||"",
+          password: values.password || "",
           url_img: url_img,
         })
 
         .then((res) => {
-          dispatch(setUser({name: values.name,
-            lastname: values.lastname,
-            username: values.username,
-            email: values.email,
-            password: values.password ||"",
-            url_img: url_img,}))
+          dispatch(
+            setUser({
+              name: values.name,
+              lastname: values.lastname,
+              username: values.username,
+              email: values.email,
+              password: values.password || "",
+              url_img: url_img,
+            })
+          );
           console.log(res);
           singUpForm.resetForm();
           toast.success("User profile modified succesfully");
           handleModal();
-
-        
         })
         .catch((error) => {
           const captureError =
@@ -184,11 +187,11 @@ function ModalProfile() {
       sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
     >
       <Box
-      id="modalProfile"
+        id="modalProfile"
         component="form"
         onSubmit={singUpForm.handleSubmit}
         sx={{
-          maxHeight:"100vh",
+          maxHeight: "100vh",
           backgroundColor: "#080f28",
           width: "30vw",
           display: "flex",
@@ -238,8 +241,7 @@ function ModalProfile() {
         <label htmlFor="user_image">
           {singUpForm.values.url_img ? (
             <Avatar
-            
-              src={singUpForm.values.url_img }
+              src={singUpForm.values.url_img}
               sx={{ height: 110, width: 110, margin: "3% 0" }}
             ></Avatar>
           ) : singUpForm.values.name && singUpForm.values.lastname ? (
@@ -371,24 +373,25 @@ function ModalProfile() {
         </Stack>
 
         <Stack>
-      
-          {!changePassword && <Typography
-            onClick={handleChangePassword}
-            sx={{ color: "red", margin: "5% 0" }}
-          >
-            {" "}
-            Change password
-          </Typography>}
+          {!changePassword && (
+            <Typography
+              onClick={handleChangePassword}
+              sx={{ color: "red", margin: "5% 0" }}
+            >
+              {" "}
+              Change password
+            </Typography>
+          )}
 
           {changePassword && (
             <>
-           <Typography
-            onClick={handleChangePassword}
-            sx={{ color: "red", margin: "5% auto" }}
-          >
-            {" "}
-            Hide
-          </Typography>
+              <Typography
+                onClick={handleChangePassword}
+                sx={{ color: "red", margin: "5% auto" }}
+              >
+                {" "}
+                Hide
+              </Typography>
               <TextField
                 label="Password"
                 required

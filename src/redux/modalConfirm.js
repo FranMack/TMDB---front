@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   modalOpen: false,
-  movieId:null
+  movieId: null,
 };
 
 const modalConfirmSlice = createSlice({

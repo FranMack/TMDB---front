@@ -6,12 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { setModalConfirmState } from "../redux/modalConfirm";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ModalConfirm from "./modalConfirm";
-import notFound from "../assets/not-found.jpg"
+import notFound from "../assets/not-found.jpg";
 
-
-
-
-function Card({ movie, cleanSearch,handleDeleteFavorite }) {
+function Card({ movie, cleanSearch, handleDeleteFavorite }) {
   const IMG_API = "https://image.tmdb.org/t/p/w500/";
   const navigate = useNavigate();
 
@@ -24,28 +21,24 @@ function Card({ movie, cleanSearch,handleDeleteFavorite }) {
 
   const user = useSelector((state) => state.user);
   const userId = user.id;
-  const modalConfirm=useSelector((state)=>state.modalConfirm.modalOpen)
-  const dispatch=useDispatch()
+  const modalConfirm = useSelector((state) => state.modalConfirm.modalOpen);
+  const dispatch = useDispatch();
 
+  console.log("ssssssss", movie.id);
 
-  console.log("ssssssss",movie.id)
-
-  const handleModalConfirm=()=>{
-    dispatch(setModalConfirmState({ modalOpen: true,movieId:movie.id }))
-  }
-
- 
-  
-
-
+  const handleModalConfirm = () => {
+    dispatch(setModalConfirmState({ modalOpen: true, movieId: movie.id }));
+  };
 
   return (
     <>
-    <ModalConfirm handleDeleteFavorite={handleDeleteFavorite} />
+      <ModalConfirm handleDeleteFavorite={handleDeleteFavorite} />
       <div className="card">
         {location === "favorites" && (
           <DeleteIcon
-          onClick={()=>{handleModalConfirm()}}
+            onClick={() => {
+              handleModalConfirm();
+            }}
             sx={{
               color: "#f7a102",
               position: "absolute",
@@ -57,7 +50,9 @@ function Card({ movie, cleanSearch,handleDeleteFavorite }) {
           />
         )}
         <img
-        onClick={()=>{handleMovie()}}
+          onClick={() => {
+            handleMovie();
+          }}
           className="cardImage"
           src={
             movie.backdrop_path && !movie.poster_path

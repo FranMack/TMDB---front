@@ -7,38 +7,31 @@ import { useYoutubeSize } from "../hooks/useYoutubeSize";
 function ModalTrailler({ open, videoId, close }) {
   const [medidas, setMedidas] = useState(null);
 
+  useEffect(() => {
+    const ventana = document.querySelector("#ventana");
 
-    useEffect(() => {
+    if (ventana && ventana.clientHeight && ventana.clientWidth) {
+      const medidas = {
+        ancho: ventana.clientWidth,
+        alto: ventana.clientHeight,
+      };
 
+      setMedidas(medidas);
+    }
+  }, [open]);
 
-      const ventana = document.querySelector("#ventana");
-  
-      if (ventana && ventana.clientHeight && ventana.clientWidth) {
-        const medidas = {
-          ancho: ventana.clientWidth,
-          alto: ventana.clientHeight,
-        };
-  
-        setMedidas(medidas);
-      }
-
-    }, [open]);
-  
-    // Opciones del reproductor de YouTube
-    const opts = {
-      height: medidas?.alto,
-      width: medidas?.ancho,}
-
-
+  // Opciones del reproductor de YouTube
+  const opts = {
+    height: medidas?.alto,
+    width: medidas?.ancho,
+  };
 
   return (
     <Modal
-    
       open={open}
       sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
     >
       <Box
-      
         sx={{
           padding: "0% 1% 1% 1%",
           backgroundColor: "rgba(8, 15, 40,0.8)",

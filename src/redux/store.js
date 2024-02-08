@@ -10,8 +10,8 @@ const store = configureStore({
     user: userSlice,
     modal: modalSlice,
     modalRegister: modalRegisterSlice,
-    modalConfirm:modalConfirm,
-    modalProfile:modalProfile
+    modalConfirm: modalConfirm,
+    modalProfile: modalProfile,
   },
 });
 

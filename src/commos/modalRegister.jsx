@@ -140,10 +140,15 @@ function ModalRegister() {
   return (
     <Modal
       open={modalOpen}
-      sx={{ display: "flex", alignItems: "center", justifyContent: "center", overflow:"scroll" }}
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        overflow: "scroll",
+      }}
     >
       <Box
-      id="modalRegister"
+        id="modalRegister"
         component="form"
         onSubmit={singUpForm.handleSubmit}
         sx={{

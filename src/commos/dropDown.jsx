@@ -9,11 +9,10 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { setModalProfileState } from "../redux/modalProfile";
 
-
 export default function DropDown({ open, anchorEl, handleClose }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const location=useLocation().pathname.slice(1)
+  const location = useLocation().pathname.slice(1);
 
   const handleLogout = () => {
     axios
@@ -25,10 +24,9 @@ export default function DropDown({ open, anchorEl, handleClose }) {
       .then(() => {
         dispatch(setUser({}));
         handleClose();
-        if(location==="favorites"){
-          navigate("/")
+        if (location === "favorites") {
+          navigate("/");
         }
-        
       })
       .catch((error) => {
         console.log(error);
@@ -37,13 +35,13 @@ export default function DropDown({ open, anchorEl, handleClose }) {
 
   const handleFavorites = () => {
     navigate("/favorites");
-    handleClose()
+    handleClose();
   };
 
-  const handleModalProfile=()=>{
+  const handleModalProfile = () => {
     dispatch(setModalProfileState({ modalOpen: true }));
-    handleClose()
-  }
+    handleClose();
+  };
 
   return (
     <Menu
